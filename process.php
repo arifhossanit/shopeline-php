@@ -24,3 +24,7 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
+
+git add .
+git commit -m"my first commit"
+git push
