@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,8 +32,19 @@
         </button>
           <div class="btn-group btn-1" role="group">
               <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-cart-arrow-down"></i> Chart</a>
+              <?php
+                if (!isset($_SESSION['id'])) {
+              ?>
               <a href="signup.php" class="btn btn-primary sub-btn-1"><i class="fas fa-user-plus"></i> Sign-up</a>
-              <a href="signin.php" class="btn btn-primary sub-btn-1 me-0"><i class="fas fa-user-lock"></i> Log-in</a>
+              <a href="login.php" class="btn btn-primary sub-btn-1 me-0"><i class="fas fa-user-lock"></i> Log-in</a>
+              <?php
+                }else{
+              ?>
+              <a href="profile.php" class="btn btn-primary sub-btn-1"><i class="fas fa-user-circle"></i> Profile</a>
+              <a href="process.php?logout=yes" class="btn btn-primary sub-btn-1 me-0"><i class="fas fa-sign-out-alt"></i> Log-out</a>
+              <?php
+                }
+              ?>
           </div>
     </nav>
     
@@ -63,12 +77,27 @@
               <div class="row justify-content-center">
                 <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-cart-plus"></i> Chart</a>
               </div>
-              <div class="row justify-content-center">
-                <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-user-plus"></i> Sign-up</a>
-              </div>
-              <div class="row justify-content-center">
-                <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-user-lock"></i> Log-in</a>
-              </div>
+              <?php
+                  if (!isset($_SESSION['id'])) {
+                ?>
+                <div class="row justify-content-center">
+                  <a href="signup.php" class="btn btn-primary sub-btn-1"><i class="fas fa-user-plus"></i> Sign-up</a>
+                </div>
+                <div class="row justify-content-center">
+                  <a href="login.php" class="btn btn-primary sub-btn-1"><i class="fas fa-user-lock"></i> Log-in</a>
+                </div>
+                <?php
+                  }else{
+                ?>
+                <div class="row justify-content-center">
+                  <a href="profile.php" class="btn btn-primary sub-btn-1"><i class="fas fa-user-circle"></i> Profile</a>
+                </div>
+                <div class="row justify-content-center">
+                  <a href="process.php?logout=yes" class="btn btn-primary sub-btn-1"><i class="fas fa-sign-out-alt"></i> Log-out</a>
+                </div>
+                <?php
+                  }
+                ?>
           </div>
         </div>
       </div>

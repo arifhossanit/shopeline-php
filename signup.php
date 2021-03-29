@@ -7,7 +7,7 @@
     
     <div class="row">
         <div class="col-md-6 m-auto">
-            <form>
+            <form action="process.php" method="post">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="name" class="form-control" id="email" name="name">
@@ -19,6 +19,10 @@
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email" class="form-control" id="email" name="email">
+                    <?php if(isset($_GET['error']) && $_GET['error']='msg'){
+                        echo '<div class="text-danger"><small>*email alrady exist</small></div>';
+                    }
+                    ?>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -51,7 +55,7 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" name="is-agree">
                     <label class="form-check-label" for="exampleCheck1">I agree with <a href="#">term & conditions</a></label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block" name="signup">Sign Up</button>
             </form>
         </div>
     </div>

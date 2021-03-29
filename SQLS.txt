@@ -9,3 +9,15 @@ CREATE TABLE users (
     user_catagory_id varchar(100),
     created_at 	varchar(100)
 )
+
+CREATE TABLE prodcuts( 
+    id int not null AUTO_INCREMENT PRIMARY KEY, 
+    vendor_id int, 
+    product_name varchar(255), 
+    product_details varchar(65000), 
+    product_type_id int, 
+    unit_weight varchar(100), 
+    unit_stock int, 
+    product_img varchar(255), 
+    updating_date varchar(100) 
+) 

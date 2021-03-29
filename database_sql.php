@@ -12,10 +12,10 @@ class Database{
 		$this->connect = mysqli_connect($this->localhost,$this->userid,$this->password,$this->database);
         $this->connect -> set_charset("utf8");
 	}
-	public function sendToDB($sql){
+	public function sendData($sql){
 		$this->connect->query($sql);
 	}
-    public function getFromDB($sql){
+    public function getData($sql){
 		$data = $this->connect->query($sql);
         return $data;
 	}
