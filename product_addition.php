@@ -7,7 +7,7 @@
     
     <div class="row">
         <div class="col-md-6 m-auto">
-            <form action="process.php" method="post">
+            <form action="process.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="name" class="form-control" id="title" name="title">
@@ -17,8 +17,14 @@
                     <textarea cols="22" rows="4" class="form-control" id="description" name="description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="type">Product type</label>
-                    <input type="text" class="form-control" id="type" name="type">
+                    <label for="type">Product Catagory</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="1">Men</option>
+                        <option value="2">Women</option>
+                        <option value="3">Kids</option>
+                        <option value="4">Home Appliance</option>
+                        <option value="5">Electronic Devices</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="weight">Unit weight</label>

@@ -78,12 +78,27 @@
       </div>
 
       <!-- Product-page -->
+
+      <?php
+        include 'database_sql.php';
+        $data = new Database();
+        $product_id = $_GET['product'];
+          $product_sql = "SELECT * FROM products WHERE id= $product_id";
+          $products = $data->getData($product_sql);
+          foreach ($products as $product) {
+              
+              $product_name = $product['product_name'];
+              $product_details = $product['product_details'];
+              $product_img = $product['product_img'];
+              $product_stock = $product['unit_stock'];
+              $product_price = $product['product_price'];
+      ?>
         <Div class="row my-4 container">
             <div class="col-12 col-md-6 bg-light">
-                <img src="img/pro1.jpg" alt="" class="card-img"> 
+                <img src="product_pic/<?php echo $product_img ?>" alt="" class="card-img"> 
             </div>
             <div class="col-12 col-md-6 bg-light">
-                <h4>PlayStation 4 Slim 1TB Console</h4> 
+                <h4><?php echo $product_name ?></h4> 
                 <div class="ratings text-warning">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -93,62 +108,22 @@
                     (2)
                 </div>
                 <p><b>Brand: </b> Sony</p>
-                <p><b>Ability: </b> In-stock</p>
-                <p><b>Price: </b>tk. 5000</p>
+                <p><b>Ability: </b> In-stock(<?php echo $product_stock ?>)</p>
+                <p><b>Price: </b>৳ <?php echo $product_price ?></p>
                 <p><b><label for="qu">Quantity: </label> </b> <input type="text" value="1" id="qu" class="form-control-sm text-center"> <a href="#" class="btn btn-primary" type="button" id="button-addon1">Add To Cart</a></p> 
             </div>
             <div class="col-12 bg-light mt-3">
                 <div class="p-3 details-2 ">
                     <h4 class="fw-bold">Product Details</h3>
                     <p>
-                        Product details of T8 Smart Mobile Watch bluetooth LBS base positioning camera supports SIM card
-
-                        >> With the clock in your hand, you can now receive calls, listen to music and do all the work necessary.
-                        >> You can do all the work of a mobile phone.
-                        Things you can do:
-                        # Can talk # Can hear the music
-                        # SMS can # Bluetooth
-                        # 16 GB memory card supported # Display: 1.8 "
-                        # Camera: 2 megapixels # Sim: Single SIM
-                        # Touch screen # First of all you can do all the functions of the phone
-
-                        Product details of M26 T8 smart watch bluetooth LBS base positioning camera supports SIM card wireless call answer phone
-
-                        Model:T8
-                        Display Screen type: 1.54" TFT LCD 240*240 resolution touch Screen
-                        Built-in chip type: MTK6261D
-                        Memory: 128MB +128MB
-                        Bluetooth version: V4.0
-                        Sim : Single Sim
-                        Functions ; Bluetooth sync: Dial, Message, Phonebook, Phone records, Remote Notice, Bluetooth Camera,
-                        Health tracker: Sleep monitor, sedentary reminder
-                        Other functions: Pedometer, Anti-lost Loudspeaker, MIC, Motor, Earphone
-                        Alert type: Vibration
-                        Sensor: G-SENSOR
-                        Display Screen type: 1.54" TFT LCD 240*240 resolution touch Screen
-                        Operating method: Touch button
-                        Battery Battery type: Lithium-polymer
-                        Battery capacity: 380mah battery
-                        Charging time: 1-2 hour
-                        Stand By 2-3 Days
-                        Features Support GSM: GSM 2GB 850/900/1800/1900
-                        Language: English,
-                        Available color: Black,
-                        Built-in 2 MP camera,
-                        Support TF: MAX 16 GB
-                        Appearance Dial shape: Round
-                        Case material: Plastic
-                        Band material: TPU
-                        Package Contents
-                        1 x T8 Smart Bracelet
-                        1 x User Manual (Chinese/English)
-                        1 x Charger Cable
-
+                    <?php echo $product_details ?>
                     </p>
                 </div>
             </div>
         </Div>
-    
+    <?php
+    }
+    ?>
   <!-- footer -->
   <footer class="bg-dark">
     <div class="text-center footer1">

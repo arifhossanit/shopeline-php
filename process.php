@@ -82,11 +82,18 @@ if (isset($_POST['login']) ) {
         $weight = $_POST['weight'];
         $stock = $_POST['stock'];
         $price = $_POST['price'];
-        $picture = $_POST['picture']['name'];
-        $tmp_picture = $_POST['picture']['tmp_name'];
+        $picture = $_FILES['picture']['name'];
+        $tmp_picture = $_FILES['picture']['tmp_name'];
         $vendor_id = $_POST['vendor_id'];
-
-        $product_add_sql = "INSERT INTO `products`((`vendor_id`, `product_name`, `product_details`, `product_type_id`, `unit_weight`, `unit_stock`, `product_img`, `uploading_date`) VALUES ('$vendorId', '$title', '$description', '$type', '$weight', '$stock', '$picture', '$price'))";
-
+        if ($title && $description && $type && $stock && $price && $picture && $vendor_id) {
+           $product_add_sql = "INSERT INTO `products` (`id`, `vendor_id`, `product_name`, `product_details`, `product_type_id`, `unit_weight`, `unit_stock`, `product_price`, `product_img`, `updating_date`) VALUES (NULL, '$vendor_id', '$title', '$description', '$type', '$weight', '$stock', '$price', '$picture', NULL)";
+            move_uploaded_file($tmp_picture,'product_pic/'.$picture);
+            $data->sendData($product_add_sql);
+            header('location:profile.php');
+        }else {
+            header('location:product_addition.php');
+        }
+        
+        
     }
 ?>

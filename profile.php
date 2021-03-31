@@ -29,6 +29,7 @@ if (isset($_SESSION['id'])) {
     <li class="list-group-item">Mobile: <?php echo $mobile?></li>
     <li class="list-group-item">E-mail: <?php echo $email?></li>
     <li class="list-group-item">Address: <?php echo $address?></li>
+    <li class="list-group-item text-center"><a href="product_addition.php" class="card-link text-decoration-none"><i class="fas fa-plus"></i> Add new product</a></li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Change password</a>
