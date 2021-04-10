@@ -31,36 +31,13 @@
         </div>
       </div>
       
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row justify-content-center">
-                  <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-cart-plus"></i> Chart</a>
-                </div>
-                <div class="row justify-content-center">
-                  <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-user-plus"></i> Sign-up</a>
-                </div>
-                <div class="row justify-content-center">
-                  <a href="#" class="btn btn-primary sub-btn-1"><i class="fas fa-user-lock"></i> Log-in</a>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      
+      <!-- Content -->
         <div class="container">
-            <div class="">
-              <div class=" title-header">
-                <h5 class="title">Featured Product</h5>
-                <hr class="title-bottom">
-              </div>
+          <div class="my-2">
+            <div class=" title-header">
+              <h5 class="title">Featured Product</h5>
+              <hr class="title-bottom">
+            </div>
           </div>
           <div class="row product-link">
           <?php
@@ -81,7 +58,7 @@
                   <button class="heart btn">
                       <i class="far fa-heart text-danger"></i>
                   </button>
-                  <button class="add-cart btn btn-primary">
+                  <button class="add-cart btn btn-primary" onclick="addProduct(<?php echo $product_id ?>,1,'addition')">
                       <i class="fa fa-shopping-cart"> add cart</i>
                   </button>
                 </div>
@@ -96,12 +73,14 @@
                   </div>
                   <h5 class=""><?php echo $product_name ?></h5>
                   <p class="text-danger">৳ <?php echo $product_price ?></p>
-                </div>
-              </a>
+                </a>
+              </div>
+                
             </div>
             <?php
             }
             ?>
+          </div>
           <div class="my-2">
               <div class=" title-header">
                 <h5 class="title">Men's Collection</h5>
@@ -109,15 +88,15 @@
               </div>
           </div>
           <div class="row product-link">
-          <?php
-            $men_product_sql = "SELECT * FROM products WHERE product_type_id ='1' order by id desc";
-            $men_products = $data->getData($men_product_sql);
-            foreach ($men_products as $product) {
-                $mproduct_id = $product['id'];
-                $mproduct_name = $product['product_name'];
-                $mproduct_img = $product['product_img'];
-                $mproduct_price = $product['product_price'];
-          ?>
+            <?php
+              $men_product_sql = "SELECT * FROM products WHERE product_type_id ='1' order by id desc";
+              $men_products = $data->getData($men_product_sql);
+              foreach ($men_products as $product) {
+                  $mproduct_id = $product['id'];
+                  $mproduct_name = $product['product_name'];
+                  $mproduct_img = $product['product_img'];
+                  $mproduct_price = $product['product_price'];
+            ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0 my-1">
               <div class="border rounded m-1 p-1 img-btn h-100">
                 <img src="product_pic/<?php echo $mproduct_img ?>" alt="" class="card-img">
@@ -125,7 +104,7 @@
                   <button class="heart btn">
                       <i class="far fa-heart text-danger"></i>
                   </button>
-                  <button class="add-cart btn btn-primary">
+                  <button class="add-cart btn btn-primary" onclick="addProduct(<?php echo $mproduct_id ?>,1,'addition')">
                       <i class="fa fa-shopping-cart"> add cart</i>
                   </button>
                 </div>
@@ -140,29 +119,30 @@
                   </div>
                   <h5 class=""><?php echo $mproduct_name ?></h5>
                   <p class="text-danger">৳ <?php echo $mproduct_price ?></p>
-                </div>
-              </a>
+                </a>
+              </div>
+              
             </div>
             <?php
             }
             ?> 
-
-             <div class="my-2">
-              <div class=" title-header">
-                <h5 class="title">Women's Collection</h5>
-                <hr class="title-bottom">
-              </div>
+          </div>
+          <div class="my-2">
+            <div class=" title-header">
+              <h5 class="title">Women's Collection</h5>
+              <hr class="title-bottom">
+            </div>
           </div>
           <div class="row product-link">
-          <?php
-            $women_product_sql = "SELECT * FROM products WHERE product_type_id ='2' order by id desc";
-            $women_products = $data->getData($women_product_sql);
-            foreach ($women_products as $product) {
-                $wproduct_id = $product['id'];
-                $wproduct_name = $product['product_name'];
-                $wproduct_img = $product['product_img'];
-                $wproduct_price = $product['product_price'];
-          ?>
+            <?php
+              $women_product_sql = "SELECT * FROM products WHERE product_type_id ='2' order by id desc";
+              $women_products = $data->getData($women_product_sql);
+              foreach ($women_products as $product) {
+                  $wproduct_id = $product['id'];
+                  $wproduct_name = $product['product_name'];
+                  $wproduct_img = $product['product_img'];
+                  $wproduct_price = $product['product_price'];
+            ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0 my-1">
               <div class="border rounded m-1 p-1 img-btn h-100">
                 <img src="product_pic/<?php echo $wproduct_img ?>" alt="" class="card-img">
@@ -170,7 +150,7 @@
                   <button class="heart btn">
                       <i class="far fa-heart text-danger"></i>
                   </button>
-                  <button class="add-cart btn btn-primary">
+                  <button class="add-cart btn btn-primary" onclick="addProduct(<?php echo $mproduct_id ?>,1,'addition')">
                       <i class="fa fa-shopping-cart"> add cart</i>
                   </button>
                 </div>
@@ -185,12 +165,13 @@
                   </div>
                   <h5 class=""><?php echo $wproduct_name ?></h5>
                   <p class="text-danger">৳ <?php echo $wproduct_price ?></p>
+                </a> 
                 </div>
-              </a>
+              
             </div>
             <?php
             }
             ?>          
+          </div>
         </div>
-
   <?php include 'footer.php' ?>

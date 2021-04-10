@@ -20,6 +20,12 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Save me</label>
                 </div>
+                <?php echo basename($_SERVER['HTTP_REFERER']);
+                if (!empty($_SERVER['HTTP_REFERER'])) {
+                   echo '<input type="hidden" name="redirect" value="'.basename($_SERVER['HTTP_REFERER']).'" >';
+                }
+                ?>
+                
                 <button type="submit" class="btn btn-primary btn-block" name="login">Log In</button>
             </form>
         </div>

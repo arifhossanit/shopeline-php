@@ -53,6 +53,7 @@ if (isset($_POST['signup'])) {
 if (isset($_POST['login']) ) {
     $email=check($_POST['email']);
     $password=md5($_POST['password']);
+    $redirect = $_POST['redirect'];
 
     $user_sql="SELECT * FROM users WHERE email = '$email' and password = '$password'";
     $user_data = $data->getData($user_sql);
@@ -60,8 +61,18 @@ if (isset($_POST['login']) ) {
     $_SESSION['id'] = $user_info['id'];
     $_SESSION['email'] = $user_info['email'];
     $_SESSION['name'] = $user_info['name'];
+    
     if (!empty($_SESSION['id'])) {
-        header('location:index.php');
+        if ($redirect =='signup.php' || $redirect =='login.php') {
+            header('location: index.php');
+            
+        }elseif (!empty($redirect)) {
+            header('location:'.$redirect);
+        }
+        else{
+            header('location: index.php');
+        }
+        
     }else {
         header('location:login.php');
     }
@@ -76,10 +87,10 @@ if (isset($_POST['login']) ) {
 
     // product addition to shopline
     if (isset($_POST['add'])) {
-        $title = $_POST['title'];
-        $description = $_POST['description'];
+        $title = check(json_encode($_POST['title']));
+        $description = check(json_encode($_POST['description']));
         $type = $_POST['type'];
-        $weight = $_POST['weight'];
+        $weight = check(json_encode($_POST['weight']));
         $stock = $_POST['stock'];
         $price = $_POST['price'];
         $picture = $_FILES['picture']['name'];
