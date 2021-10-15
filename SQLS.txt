@@ -21,3 +21,4 @@ CREATE TABLE prodcuts(
     product_img varchar(255), 
     updating_date varchar(100) 
 ) 
+CREATE DATABASE shopline;
